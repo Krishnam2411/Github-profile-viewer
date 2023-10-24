@@ -1,5 +1,6 @@
-import React from 'react'
-import Search from '../search/search'
+import React from 'react';
+import Search from '../search/search';
+
 const Header = ({ username, setUsername }) => {
   return (
     <>
@@ -11,4 +12,4 @@ const Header = ({ username, setUsername }) => {
   )
 }
 
-export default Header
+export default Header;

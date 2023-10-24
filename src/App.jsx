@@ -1,48 +1,51 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import useDebounce from "./hooks/useDebounce"
-import Header from "./components/header/header"
-import Main from "./components/main/main"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import useDebounce from "./hooks/useDebounce";
+import Header from "./components/header/header";
+import Main from "./components/main/main";
 
 function App() { 
-  const [ username, setUsername ] = useState("")
-  const [ data, setData ] = useState([])
-  const [ notfound, setNotfound ] = useState(false)
-  const debouncedSearch = useDebounce(username, 1000)
+  const [ username, setUsername ] = useState("");
+  const [ data, setData ] = useState([]);
+  const [ notfound, setNotfound ] = useState(false);
+  const debouncedSearch = useDebounce(username, 1000);
   useEffect(() => {
     if(!debouncedSearch) {
-      setNotfound(false)
+      setNotfound(false);
       return;
     }
     axios
       .get(`https://api.github.com/users/${debouncedSearch}`)
       .then((response) => {
         if(response.status === 200) {
-          setNotfound(false)
-          setData(response.data)
+          setNotfound(false);
+          setData(response.data);
         }
       })
       .catch((error) => {
         if(error.response.status === 404) {
-          setNotfound(true)
+          setNotfound(true);
           setData({"message": "NOT FOUND"});
         } else {
-          console.log(error)
+          console.log(error);
         }
     })
-  }, [debouncedSearch])
+  }, [debouncedSearch]);
+
   return (
     <>
       <Header username={username} setUsername={setUsername} />
       {
         (notfound) ?
-          (<h2>❌ NOT FOUND ❌</h2>) :
-          ((debouncedSearch) ?
-          (<Main data={data}/>) :
-          (<h2>🔎 Search using GitHub Username</h2>))
+          (<h2> ❌ NOT FOUND ❌ </h2>) :
+          (
+            (debouncedSearch) ?
+            (<Main data={data}/>) :
+            (<h2>🔎 Search using GitHub Username</h2>)
+          )
       }
     </>
   )
 }
 
-export default App
+export default App;

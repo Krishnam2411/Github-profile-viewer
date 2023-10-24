@@ -7,19 +7,18 @@
 }
 
 :root {
-  --font-light: rgb(26, 27, 29);
-  --font-dark: rgb(238, 247, 254);
+  --font-dark: rgb(29, 30, 32);
+  --font-light: rgb(244, 247, 250);
   --background-light: rgb(243, 249, 255);
   --background-dark: rgb(34, 34, 34);
+  --highlight: rgb(0, 0, 255);
 }
 
 body {
   font-size: 20px;
   width: 100%;
-  /* display: flex;
-  justify-content: center; */
   font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-  color: var(--font-light);
+  color: var(--font-dark);
   background-color: var(--background-light);
 }
 
@@ -40,7 +39,7 @@ header {
   width: 100%;
   padding: 1rem 2rem;
   background-color: var(--background-dark);
-  color: var(--font-dark);
+  color: var(--font-light);
 }
 input {
   width: fit-content;
@@ -93,8 +92,8 @@ main {
 .card {
   margin: 0.8em 0.4em;
   padding: 0.4em 1em;
-  background-color: blue;
-  color: white;
+  background-color: var(--highlight);
+  color: var(--font-light);
   border-radius: 0.5rem;
   width: fit-content;
 }
@@ -103,8 +102,8 @@ main {
   margin: 0.5em 0.2em;
   padding: 0.4em 1em;
   font-size: 1.4rem;
-  background-color: black;
-  color: white;
+  background-color: var(--background-dark);
+  color: var(--font-light);
   border-radius: 1em;
   width: fit-content;
 }

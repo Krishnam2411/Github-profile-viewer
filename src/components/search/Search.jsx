@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Search = ({ username, setUsername }) => {
   return (
@@ -8,4 +8,4 @@ const Search = ({ username, setUsername }) => {
   )
 }
 
-export default Search
+export default Search;
